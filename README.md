@@ -33,20 +33,32 @@ Examine the structure of the dataset, check for missing values, and understand t
   covid_df.head(10)
   covid_df.info()
   covid_df.describe()
+<<<<<<< HEAD
 </pre>
 <pre>
+=======
+
+>>>>>>> origin/main
   #for vaccine_df dataset
   vaccine_df.head(7)
   vaccine_df.info()
   vaccine_df.isnull().sum()
+<<<<<<< HEAD
 </pre>
 <pre>
+=======
+
+>>>>>>> origin/main
   #for daily_df dataset
   daily_df.tail(10)
   daily_df.shape
   daily_df.columns
+<<<<<<< HEAD
 </pre>
 <pre>
+=======
+
+>>>>>>> origin/main
   #for summary_df dataset
   summary_df.shape
   summary_df.columns
@@ -67,8 +79,12 @@ Handle missing values, outliers, and format data for analysis.
 
   #Create an active cases column
   covid_df['Active_Cases'] = covid_df['Confirmed'] - (covid_df['Cured']-covid_df['Deaths'])
+<<<<<<< HEAD
 </pre>
 <pre>
+=======
+
+>>>>>>> origin/main
   #Rename the column to vaccine date
   vaccine_df.rename(columns = { 'Updated On' : 'Vaccine_Date'}, inplace = True)
 
@@ -83,8 +99,12 @@ Handle missing values, outliers, and format data for analysis.
 
   #Rename the columns
   vaccine.rename(columns = { "Total Individuals Vaccinated" : "Total"}, inplace = True)
+<<<<<<< HEAD
 </pre>
 <pre>
+=======
+
+>>>>>>> origin/main
   #Handling Missing Values
   daily_df = daily_df.fillna(0)
   summary_df = summary_df.fillna(0)
@@ -102,17 +122,27 @@ Handle missing values, outliers, and format data for analysis.
 7. Data Visualization:
 Create visualizations to better understand trends and patterns in the data.
 
+<<<<<<< HEAD
 # Creating Pivot Table
 <pre>
+=======
+<pre>
+  # Creating Pivot Table
+>>>>>>> origin/main
   statewise = pd.pivot_table(covid_df, values = ["Confirmed", "Deaths", "Cured"], index = "State/UnionTerritory", aggfunc = "max")
   statewise["Recovery Rate"] = statewise["Cured"]*100/statewise["Confirmed"]
   statewise["Mortality Rate"] = statewise["Deaths"]*100/statewise["Confirmed"]
   statewise = statewise.sort_values(by = "Confirmed", ascending = False)
   statewise.style.background_gradient(cmap = "gist_earth")
+<<<<<<< HEAD
 </pre>
 
 # Top 10 Active Cases State - Bar plot
 <pre>
+=======
+
+  # Top 10 Active Cases State - Bar plot
+>>>>>>> origin/main
   top_10_active_cases = covid_df.groupby(by = 'State/UnionTerritory').max()[['Active_Cases', 'Date']].sort_values(by = ['Active_Cases'], ascending = False).reset_index()
   fig = plt.figure(figsize=(18,10))
   plt.title("Top 10 states with most active cases in India", size = 25)
@@ -120,10 +150,15 @@ Create visualizations to better understand trends and patterns in the data.
   plt.xlabel("States")
   plt.ylabel("Total Active Cases")
   plt.show()
+<<<<<<< HEAD
 </pre>
 
 # Top States with Highest Deaths - Bar Plot
 <pre>
+=======
+
+  # Top States with Highest Deaths - Bar Plot
+>>>>>>> origin/main
   top_10_deaths = covid_df.groupby(by = 'State/UnionTerritory').max()[['Deaths', 'Date']].sort_values(by = ['Deaths'], ascending = False).reset_index()
   fig = plt.figure(figsize=(18,10))
   plt.title("Top 10 states with most deaths in India", size = 25)
@@ -131,23 +166,36 @@ Create visualizations to better understand trends and patterns in the data.
   plt.xlabel("States")
   plt.ylabel("Total Death Cases")
   plt.show()
+<<<<<<< HEAD
 </pre>
 
 # Growth Trend - Line Graph
 <pre>
+=======
+
+  # Growth Trend - Line Graph
+>>>>>>> origin/main
   fig = plt.figure(figsize = (12,6))
   ax = sns.lineplot(data = covid_df[covid_df['State/UnionTerritory'].isin(['Maharashtra', 'Karnataka', 'Kerala', 'Tamil Nadu', 'Uttar Pradesh'])], x = "Date", 
   y = "Active_Cases", 
   hue = "State/UnionTerritory")
   ax.set_title("Top 5 Affected States in India", size =16)
+<<<<<<< HEAD
 </pre>
 <pre>
+=======
+
+>>>>>>> origin/main
   # Male vs Female vaccination - Pie Chart
   male = vaccination["Male(Individuals Vaccinated)"].sum()
   female = vaccination["Female(Individuals Vaccinated)"].sum()
   px.pie(names=["Male", "Female"], values = [male, female], title = "Male and Female Vaccination")
+<<<<<<< HEAD
 </pre>
 <pre>
+=======
+
+>>>>>>> origin/main
   # Top 5 Vaccinated States In India - Bar Plot
   fig = plt.figure(figsize = (10,5))
   plt.title("Top 5 Vaccinated States in India", size = 20)
@@ -155,8 +203,12 @@ Create visualizations to better understand trends and patterns in the data.
   plt.xlabel("States")
   plt.ylabel("Vaccination")
   plt.show()
+<<<<<<< HEAD
 </pre>
 <pre>
+=======
+
+>>>>>>> origin/main
   # Least 5 Vaccinated States In India - Bar Plot
 
   fig = plt.figure(figsize = (18,9))
@@ -167,6 +219,7 @@ Create visualizations to better understand trends and patterns in the data.
   plt.show()
 
   #Mortality Rate by Countries in Line Graph
+<<<<<<< HEAD
     line = px.line(
     summary_df,
     x = 'country',
@@ -339,3 +392,18 @@ line.show()
 
 8. Statistical Analysis:
 Conduct statistical analysis to derive insights.
+=======
+  line = px.line(
+      summary_df,
+      x = 'country',
+      y = 'mortality_rate',
+      color = 'continent',
+      title = 'Mortality Rate by Countries'
+  )
+  line.show()
+  
+</pre>
+
+8. Statistical Analysis:
+Conduct statistical analysis to derive insights.
+>>>>>>> origin/main
