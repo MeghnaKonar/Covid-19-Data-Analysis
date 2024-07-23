@@ -323,3 +323,5 @@ line.show()
     bar.show()
 </pre>
 
+8. Statistical Analysis:
+Conduct statistical analysis to derive insights.
