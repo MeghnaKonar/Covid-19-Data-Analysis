@@ -345,7 +345,7 @@ line.show()
 
 8. Statistical Analysis:
 Conduct statistical analysis to derive insights.
-=======
+<pre>
   line = px.line(
       summary_df,
       x = 'country',
@@ -354,7 +354,7 @@ Conduct statistical analysis to derive insights.
       title = 'Mortality Rate by Countries'
   )
   line.show()
-  
+  </pre>
 </pre>
 
 8. Statistical Analysis:
